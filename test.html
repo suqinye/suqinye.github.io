@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <script type="text/javascript">
+        window.onload=function () {
+            var oInput01=document.getElementById('input01');
+            var oInput02=document.getElementById('input02');
+            var oBtn01=document.getElementById('btn');
+            var oFu=document.getElementById('fuhao');
+            oBtn01.onclick=function () {
+                var v1=oInput01.value;//获取被加数值
+                var v2=oInput02.value;//获取加数值
+                var fuhao=oFu.value;//获取符号值
+                var rs1 =f1(v1,v2);//加法
+                var rs2=f2(v1,v2);//减法
+                var rs3=f3(v1,v2);//乘法
+                var rs4=f4(v1,v2);//除法
+                if (v1==""||v2==""){
+                    alert('输入框不能为空！');
+                    return ;
+                }
+    //		isNaN（）函数用于检查一个变量是否为数值，如果是，则返回false，否则返回true
+	/*isNaN() 函数通常用于检测 parseFloat() 和 parseInt() 的结果，
+		以判断它们表示的是否是合法的数字。
+		当然也可以用 isNaN() 函数来检测算数错误，比如用 0 作除数的情况。*/ 
+                if(isNaN(v1)||isNaN(v2)){
+                    alert('请输入数字');
+                    return;
+                }
+                switch (fuhao) {
+                    case '0':
+                        alert(rs1);
+                        break;
+                    case '1':
+                        alert(rs2);
+                        break;
+                    case '2':
+                        alert(rs3);
+                        break;
+                    case '3':
+                        alert(rs4);
+                        break;
+                }
+            }
+			// 加法
+            function f1(a,b){
+                var c = (parseFloat(a)*100+parseFloat(b)*100)/100;
+                return c;
+            }
+			// 减法
+            function f2 (a,b) {
+                var c=a-b;
+                return c;
+            }
+			// 乘法
+            function f3 (a,b) {
+                var c=(((parseFloat(a)*100)*(parseFloat(b)*100)))/10000;
+                return c;
+            }
+			// 除法
+            function f4 (a,b) {
+                var c=(parseFloat(a)*100)/(parseFloat(b)*100);
+                return c;
+            }
+        }
+
+    </script>
+</head>
+<body>
+	<!--  被加数-->
+    <input type="text" placeholder="请输入数字" id="input01">
+	<!-- 运算符 -->
+    <select id="fuhao">
+        <option value="0">+</option>
+        <option value="1">-</option>
+        <option value="2">*</option>
+        <option value="3">/</option>
+    </select>
+	<br><br>
+	<!--加数  -->
+     <input type="text" id="input02">
+	 <!-- 结果 -->
+     <input type="button" value="计算" id="btn">
+</body>
+</html>
